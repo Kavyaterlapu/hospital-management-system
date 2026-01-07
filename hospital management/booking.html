@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Booking | Online Hospital Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background-image: url('hospital.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Header/Nav */
+    .nav-link { 
+      position: relative; 
+      color: #60a5fa; 
+      font-weight: 600; 
+      font-size: 0.95rem; 
+      transition: .3s; 
+    }
+    .nav-link:hover { color: #3b82f6; }
+    .nav-link::after { 
+      content: ""; 
+      position: absolute; 
+      left: 0; 
+      bottom: -2px; 
+      width: 0; 
+      height: 2px; 
+      background: #60a5fa; 
+      transition: .3s; 
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Card */
+    .card {
+      background: rgba(31, 41, 55, 0.85); /* optional slight transparency for readability */
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      font-weight: 500;
+      transition: transform .3s, box-shadow .3s, background .3s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: rgba(55, 65, 81, 0.9);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Optional text shadow for better readability */
+    h2, h3, h4, p, label {
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body class="text-gray-100 pt-28">
+
+  <!-- Header + Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gray-800/90 backdrop-blur-md shadow-lg">
+    <h1 class="text-white text-2xl font-bold py-3 text-center">
+      🏥 Online Hospital Management System
+    </h1>
+    <nav class="bg-gray-700/70 py-2 flex justify-center gap-6 shadow-md">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="booking.html" class="nav-link">Booking Slots</a>
+      <a href="notifications.html" class="nav-link">Notifications</a>
+      <a href="search doctor.html" class="nav-link">Search Doctor</a>
+      <a href="prescription.html" class="nav-link">Prescription</a>
+       <a href="profile.html" class="nav-link">Profile</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Booking Section -->
+  <section class="max-w-4xl mx-auto px-4 mt-12">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">Doctor Availability & Booking Slots</h2>
+
+    <!-- Search -->
+    <div class="flex justify-center mb-6">
+      <input type="text" placeholder="Search by doctor name, specialty, or disease..."
+        class="w-2/3 md:w-1/2 px-4 py-2 rounded-lg border border-gray-600 bg-gray-900/70 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- Doctor Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+      <div class="card" data-name="Dr. Ramesh" data-qualification="MBBS, MD (Cardiology)" data-specialty="Cardiology" data-time="10:00 AM - 2:00 PM">
+        <h4 class="text-lg font-bold">Dr. Ramesh</h4>
+        <p class="text-sm">Specialty: Cardiology</p>
+        <p class="text-xs text-gray-200">Click for details</p>
+      </div>
+      <div class="card" data-name="Dr. Sita" data-qualification="MBBS, MS (Orthopedics)" data-specialty="Orthopedics" data-time="12:00 PM - 4:00 PM">
+        <h4 class="text-lg font-bold">Dr. Sita</h4>
+        <p class="text-sm">Specialty: Orthopedics</p>
+        <p class="text-xs text-gray-200">Click for details</p>
+      </div>
+      <div class="card" data-name="Dr. Arjun" data-qualification="MBBS, MD (Dermatology)" data-specialty="Dermatology" data-time="9:00 AM - 1:00 PM">
+        <h4 class="text-lg font-bold">Dr. Arjun</h4>
+        <p class="text-sm">Specialty: Dermatology</p>
+        <p class="text-xs text-gray-200">Click for details</p>
+      </div>
+      <div class="card" data-name="Dr. Priya" data-qualification="MBBS, DCH (Pediatrics)" data-specialty="Pediatrics" data-time="11:00 AM - 3:00 PM">
+        <h4 class="text-lg font-bold">Dr. Priya</h4>
+        <p class="text-sm">Specialty: Pediatrics</p>
+        <p class="text-xs text-gray-200">Click for details</p>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="rounded-xl shadow-lg p-6 bg-gray-900/70">
+      <h3 class="text-xl font-semibold text-center mb-6 text-blue-400">Book a Slot</h3>
+      <form id="bookingForm" class="space-y-4">
+        <div>
+          <label for="patientName" class="block mb-1 font-medium">Patient Name</label>
+          <input type="text" id="patientName" class="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label for="patientAge" class="block mb-1 font-medium">Age</label>
+          <input type="number" id="patientAge" class="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label for="disease" class="block mb-1 font-medium">Select Disease / Specialty</label>
+          <select id="disease" class="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500" required>
+            <option value="">--Select--</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Pediatrics">Pediatrics</option>
+          </select>
+        </div>
+        <div>
+          <label for="doctor" class="block mb-1 font-medium">Select Doctor</label>
+          <select id="doctor" class="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500" required>
+            <option value="">--Select--</option>
+            <option value="Dr. Ramesh">Dr. Ramesh</option>
+            <option value="Dr. Sita">Dr. Sita</option>
+            <option value="Dr. Arjun">Dr. Arjun</option>
+            <option value="Dr. Priya">Dr. Priya</option>
+          </select>
+        </div>
+        <div>
+          <label for="timeSlot" class="block mb-1 font-medium">Select Time Slot</label>
+          <select id="timeSlot" class="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-gray-100 focus:ring-2 focus:ring-blue-500" required>
+            <option value="">--Select--</option>
+            <option value="9:00-10:00">9:00 - 10:00</option>
+            <option value="10:00-11:00">10:00 - 11:00</option>
+            <option value="11:00-12:00">11:00 - 12:00</option>
+            <option value="12:00-1:00">12:00 - 1:00</option>
+          </select>
+        </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-2 rounded-lg transition">
+          Book Appointment
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Doctor Details Popup -->
+  <div id="doctorModal" class="hidden fixed inset-0 bg-black/70 flex justify-center items-center z-50">
+    <div class="rounded-xl shadow-lg w-80 text-center p-6 bg-gray-900/80">
+      <button class="close text-red-400 float-right text-xl font-bold">&times;</button>
+      <h3 id="docName" class="text-lg font-bold mb-2 text-blue-400"></h3>
+      <p><strong>Qualification:</strong> <span id="docQualification"></span></p>
+      <p><strong>Specialization:</strong> <span id="docSpecialty"></span></p>
+      <p><strong>Available Time:</strong> <span id="docTime"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Booking Form
+    const bookingForm = document.getElementById('bookingForm');
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const patientName = document.getElementById('patientName').value;
+      const patientAge = document.getElementById('patientAge').value;
+      const disease = document.getElementById('disease').value;
+      const doctor = document.getElementById('doctor').value;
+      const timeSlot = document.getElementById('timeSlot').value;
+
+      alert(`Appointment booked!\nPatient: ${patientName}\nAge: ${patientAge}\nDisease: ${disease}\nDoctor: ${doctor}\nTime: ${timeSlot}`);
+      bookingForm.reset();
+    });
+
+    // Doctor Details Modal
+    const modal = document.getElementById('doctorModal');
+    const closeBtn = document.querySelector('.close');
+    const cards = document.querySelectorAll('.card');
+    const docName = document.getElementById('docName');
+    const docQualification = document.getElementById('docQualification');
+    const docSpecialty = document.getElementById('docSpecialty');
+    const docTime = document.getElementById('docTime');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        docName.textContent = card.dataset.name;
+        docQualification.textContent = card.dataset.qualification;
+        docSpecialty.textContent = card.dataset.specialty;
+        docTime.textContent = card.dataset.time;
+        modal.classList.remove('hidden');
+      });
+    });
+
+    closeBtn.onclick = () => modal.classList.add('hidden');
+    window.onclick = (e) => { if(e.target == modal) modal.classList.add('hidden'); };
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Hospital Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('hospital.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e5e7eb;
+    }
+
+    .card {
+      background: rgba(31, 41, 55, 0.85);
+      padding: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: rgba(55, 65, 81, 0.9);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    }
+
+    @keyframes slideUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes bounceSlow { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+
+    .animate-slideUp { animation: slideUp 1.5s ease-in-out; }
+    .animate-fadeIn { animation: fadeIn 1.5s ease-in-out; }
+    .animate-bounceSlow { animation: bounceSlow 2s infinite; }
+
+    .nav-link {
+      position: relative;
+      color: #60a5fa;
+      font-weight: 600;
+      transition: .3s;
+    }
+    .nav-link:hover { color: #3b82f6; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: #60a5fa;
+      transition: .3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="pt-28">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gray-800/70 backdrop-blur-md shadow-lg">
+    <h1 class="text-white text-2xl font-bold py-3 text-center">
+      🏥 Admin Dashboard - Hospital Management System
+    </h1>
+    <!-- Navbar -->
+    <nav class="bg-gray-700/50 py-2 flex justify-center gap-6 shadow-md">
+      <a href="A-home.html" class="nav-link">Home</a>
+      <a href="A-doctors.html" class="nav-link">Doctors</a>
+      <a href="manage_patients.html" class="nav-link">Patients</a>
+      <a href="manage_appointments.html" class="nav-link">Appointments</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+      <a href="logout.html" class="nav-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Dashboard Section -->
+  <section class="relative py-28 px-6 text-center">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10">
+      <h1 class="text-4xl font-extrabold mb-4 animate-slideUp">
+        Welcome, Admin 👩‍💼
+      </h1>
+      <p class="text-base md:text-lg opacity-90 animate-fadeIn">
+        Monitor hospital operations, manage doctors, patients, and appointments — all in one place.
+      </p>
+    </div>
+  </section>
+
+  <!-- Statistics Cards -->
+  <section class="py-10 px-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">📊 System Overview</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="card text-center">
+        <h3 class="text-xl font-semibold text-blue-400">Patients</h3>
+        <p class="text-3xl font-bold mt-2">152</p>
+      </div>
+      <div class="card text-center">
+        <h3 class="text-xl font-semibold text-green-400">Doctors</h3>
+        <p class="text-3xl font-bold mt-2">45</p>
+      </div>
+      <div class="card text-center">
+        <h3 class="text-xl font-semibold text-yellow-400">Appointments</h3>
+        <p class="text-3xl font-bold mt-2">87</p>
+      </div>
+      <div class="card text-center">
+        <h3 class="text-xl font-semibold text-pink-400">Revenue</h3>
+        <p class="text-3xl font-bold mt-2">₹2.5L</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access Links -->
+  <section class="py-10 px-6 max-w-6xl mx-auto text-center">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">⚡ Quick Access</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <a href="manage_doctors.html" class="card cursor-pointer">👨‍⚕️ Manage Doctors</a>
+      <a href="manage_patients.html" class="card cursor-pointer">🧑‍🤝‍🧑 Manage Patients</a>
+      <a href="manage_appointments.html" class="card cursor-pointer">📅 Manage Appointments</a>
+      <a href="reports.html" class="card cursor-pointer">📊 View Reports</a>
+      <a href="feedback.html" class="card cursor-pointer">💬 View Feedback</a>
+      <a href="settings.html" class="card cursor-pointer">⚙️ System Settings</a>
+    </div>
+  </section>
+
+  <!-- Chart Section (Optional Placeholder) -->
+  <section class="py-12 px-6 max-w-5xl mx-auto text-center">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">📈 Analytics Overview</h2>
+    <div class="card">
+      <p class="text-gray-300">📊 Chart or analytics will appear here (e.g., appointments per day)</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900/70 text-gray-400 text-center py-6 mt-10 text-sm">
+    <p class="mb-1">&copy; 2025 Online Hospital Management System</p>
+    <p>👩‍💼 Admin Panel | Secure Access</p>
+  </footer>
+
+</body>
+</html>

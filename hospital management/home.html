@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management System - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('hospital.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e5e7eb;
+    }
+
+    .card {
+      background: rgba(31, 41, 55, 0.85); /* semi-transparent dark */
+      padding: 0.8rem 1rem;   /* reduced padding */
+      border-radius: 0.5rem;  /* smaller rounding */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 0.9rem;      /* smaller text */
+      font-weight: 500;
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .card:hover {
+      transform: scale(1.04);
+      background: rgba(55, 65, 81, 0.9);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    }
+
+    /* Animations */
+    @keyframes slideUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes bounceSlow { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+    @keyframes zoomIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
+
+    .animate-slideUp { animation: slideUp 1.5s ease-in-out; }
+    .animate-fadeIn { animation: fadeIn 1.5s ease-in-out; }
+    .animate-bounceSlow { animation: bounceSlow 2s infinite; }
+    .animate-zoomIn { animation: zoomIn 0.5s ease-out; }
+
+    .nav-link {
+      position:relative;
+      color:#60a5fa;
+      font-weight:600;
+      font-size:0.95rem;
+      transition:.3s;
+    }
+    .nav-link:hover { color:#3b82f6; }
+    .nav-link::after {
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      width:0;
+      height:2px;
+      background:#60a5fa;
+      transition:.3s;
+    }
+    .nav-link:hover::after { width:100%; }
+  </style>
+</head>
+<body class="pt-28">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gray-800/70 backdrop-blur-md shadow-lg">
+    <h1 class="text-white text-2xl font-bold py-3 text-center">
+      🏥 Online Hospital Management System
+    </h1>
+    <!-- Navbar -->
+    <nav class="bg-gray-700/50 py-2 flex justify-center gap-6 shadow-md">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="booking.html" class="nav-link">Booking</a>
+      <a href="notifications.html" class="nav-link">Notifications</a>
+      <a href="search doctor.html" class="nav-link">Search Doctor</a>
+      <a href="prescription.html" class="nav-link">Prescription</a>
+       <a href="profile.html" class="nav-link">Profile</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative text-white py-36 px-6 text-center">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 animate-slideUp">
+        Quality Healthcare Through Technology
+      </h1>
+      <p class="text-base md:text-lg opacity-90 animate-fadeIn delay-300">
+        A smart hospital management system for patients, doctors, and administrators.
+      </p>
+      <button class="mt-6 px-6 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-lg shadow-lg transition transform hover:scale-105 animate-bounceSlow text-sm">
+       <a href="booking.html"> 🚀 Get Started </a>
+      </button>
+    </div>
+  </section>
+
+ <!-- Key Features -->
+<section class="py-16 px-6 max-w-6xl mx-auto text-center">
+  <h2 class="text-2xl font-bold text-gray-900 mb-8">✨ Key Features</h2>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="card">🔐 Easy Login</div>
+    <div class="card">📅 Online Booking</div>
+    <div class="card">👨‍⚕️ Doctor Search</div>
+    <div class="card">🔔 Notifications</div>
+    <div class="card">💊 E-Prescriptions</div>
+    <div class="card">📊 Admin Dashboard</div>
+  </div>
+</section>
+
+<!-- Doctors Section -->
+<section class="py-16 px-6 max-w-6xl mx-auto text-center">
+  <h2 class="text-2xl font-bold text-gray-900 mb-8">👨‍⚕️ Our Doctors</h2>
+  <div class="grid gap-5 md:grid-cols-3">
+    <div onclick="openModal('Dr. Arjun', 'MBBS, MD', 'Cardiologist', 'Mon-Fri 10AM-2PM')" class="card cursor-pointer">Dr. Arjun</div>
+    <div onclick="openModal('Dr. Priya', 'MBBS, MS', 'Gynecologist', 'Mon-Sat 9AM-1PM')" class="card cursor-pointer">Dr. Priya</div>
+    <div onclick="openModal('Dr. Ravi', 'MBBS, MS Ortho', 'Orthopedic', 'Tue-Sun 11AM-4PM')" class="card cursor-pointer">Dr. Ravi</div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section class="py-16 px-6 max-w-5xl mx-auto text-center">
+  <h2 class="text-2xl font-bold text-gray-900 mb-8">⚙️ How It Works</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="card">1️⃣ Patient Signs Up</div>
+    <div class="card">2️⃣ Book Appointment</div>
+    <div class="card">3️⃣ Visit & Get Care</div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900/70 text-gray-400 text-center py-6 mt-10 text-sm">
+    <p class="mb-1">&copy; 2025 Online Hospital Management System</p>
+    <p>📧 info@hospital.com | ☎️ +91-9876543210</p>
+  </footer>
+
+  <!-- Modal Script -->
+  <script>
+    function openModal(name, qual, spec, time) {
+      document.getElementById("docName").innerText = name;
+      document.getElementById("docQual").innerText = "🎓 " + qual;
+      document.getElementById("docSpec").innerText = "💼 " + spec;
+      document.getElementById("docTime").innerText = "⏰ " + time;
+      document.getElementById("doctorModal").classList.remove("hidden");
+    }
+    function closeModal() {
+      document.getElementById("doctorModal").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

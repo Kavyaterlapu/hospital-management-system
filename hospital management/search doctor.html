@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Doctors | Hospital Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      background-image: url('hospital.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e5e7eb;
+    }
+
+    /* Header/Nav */
+    .nav-link {
+      position: relative;
+      color: #60a5fa;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: .3s;
+    }
+    .nav-link:hover { color: #3b82f6; }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:#60a5fa; transition:.3s; }
+    .nav-link:hover::after { width:100%; }
+
+    /* Form & Cards */
+    .card, .form-container {
+      background: rgba(31, 41, 55, 0.85); /* semi-transparent overlay */
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body class="pt-28">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gray-800/70 backdrop-blur-md shadow-lg">
+    <h1 class="text-white text-2xl font-bold py-3 text-center">
+      🏥 Online Hospital Management System
+    </h1>
+    <!-- Navbar -->
+    <nav class="bg-gray-700/50 py-2 flex justify-center gap-6 shadow-md">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="booking.html" class="nav-link">Booking</a>
+      <a href="notifications.html" class="nav-link">Notifications</a>
+      <a href="search doctor.html" class="nav-link">Search Doctor</a>
+      <a href="prescription.html" class="nav-link">Prescription</a>
+       <a href="profile.html" class="nav-link">Profile</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="max-w-3xl mx-auto py-12 px-4">
+    <h1 class="text-3xl font-bold text-gray-900 text-center mb-8">Search Doctors by Disease</h1>
+
+    <!-- Search Form -->
+    <div class="form-container p-6 rounded-xl shadow-lg mb-6">
+      <form id="searchForm" class="flex flex-col md:flex-row gap-4">
+        <input type="text" id="disease" placeholder="Enter disease name"
+          class="flex-1 px-4 py-2 rounded-lg bg-gray-900/70 text-white border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          required>
+        <button type="submit"
+          class="px-6 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+          Search
+        </button>
+      </form>
+    </div>
+
+    <!-- Search Results -->
+    <div id="results" class="space-y-4"></div>
+  </div>
+
+  <script>
+    // Doctor Data
+    const doctors = [
+      { name: "Dr. Rajesh Sharma", specialty: "Cardiologist", disease: "Heart Disease", contact: "123-456-7890" },
+      { name: "Dr. Anjali Verma", specialty: "Dermatologist", disease: "Skin Infection", contact: "987-654-3210" },
+      { name: "Dr. Vikram Singh", specialty: "Neurologist", disease: "Migraine", contact: "555-123-4567" },
+      { name: "Dr. Priya Kapoor", specialty: "ENT Specialist", disease: "Sinusitis", contact: "222-333-4444" },
+      { name: "Dr. Karan Mehta", specialty: "Pediatrician", disease: "Fever", contact: "999-888-7777" },
+      { name: "Dr. Sunita Agarwal", specialty: "Gynaecologist", disease: "Pregnancy Checkup", contact: "111-222-3333" },
+      { name: "Dr. Ramesh Gupta", specialty: "Neurologist", disease: "Headache", contact: "444-555-6666" },
+      { name: "Dr. Meera Joshi", specialty: "Orthopedic", disease: "Back Pain", contact: "777-888-9999" },
+      { name: "Dr. Akash Malhotra", specialty: "General Physician", disease: "Cold & Cough", contact: "333-444-5555" },
+      { name: "Dr. Shalini Rao", specialty: "Gynaecologist", disease: "Menstrual Issues", contact: "888-999-0000" }
+    ];
+
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const diseaseQuery = document.getElementById('disease').value.toLowerCase();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = "";
+
+      const filteredDoctors = doctors.filter(doc => doc.disease.toLowerCase().includes(diseaseQuery));
+
+      if(filteredDoctors.length === 0) {
+        resultsDiv.innerHTML = '<p class="text-red-400 text-center">No doctors found for this disease.</p>';
+      } else {
+        filteredDoctors.forEach(doc => {
+          const doctorCard = document.createElement('div');
+          doctorCard.className = "card p-4 rounded-lg";
+          doctorCard.innerHTML = `
+            <h2 class="text-white font-semibold text-lg">${doc.name}</h2>
+            <p class="text-gray-300">Specialty: ${doc.specialty}</p>
+            <p class="text-gray-300">Disease: ${doc.disease}</p>
+            <p class="text-gray-300">Contact: ${doc.contact}</p>
+          `;
+          resultsDiv.appendChild(doctorCard);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

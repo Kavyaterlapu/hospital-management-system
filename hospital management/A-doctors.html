@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Doctors - Hospital Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('hospital.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e5e7eb;
+    }
+
+    .card {
+      background: rgba(31, 41, 55, 0.85);
+      padding: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      background: rgba(55, 65, 81, 0.9);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    }
+
+    @keyframes slideUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    .animate-slideUp { animation: slideUp 1.5s ease-in-out; }
+    .animate-fadeIn { animation: fadeIn 1.5s ease-in-out; }
+
+    .nav-link {
+      position: relative;
+      color: #60a5fa;
+      font-weight: 600;
+      transition: .3s;
+    }
+    .nav-link:hover { color: #3b82f6; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: #60a5fa;
+      transition: .3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="pt-28">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gray-800/70 backdrop-blur-md shadow-lg">
+    <h1 class="text-white text-2xl font-bold py-3 text-center">
+      🏥 Manage Doctors - Hospital Management System
+    </h1>
+    <!-- Navbar -->
+    <nav class="bg-gray-700/50 py-2 flex justify-center gap-6 shadow-md">
+      <a href="A-home.html" class="nav-link">Home</a>
+      <a href="A-doctors.html" class="nav-link">Doctors</a>
+      <a href="manage_patients.html" class="nav-link">Patients</a>
+      <a href="manage_appointments.html" class="nav-link">Appointments</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+      <a href="logout.html" class="nav-link">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <section class="py-12 px-6 text-center">
+    <h1 class="text-4xl font-extrabold mb-4 animate-slideUp">👨‍⚕️ Doctor Management</h1>
+    <p class="text-base md:text-lg opacity-90 animate-fadeIn">
+      Add, update, or remove doctor details, and monitor their appointments.
+    </p>
+  </section>
+
+  <!-- Add Doctor Button -->
+  <section class="py-6 px-6 max-w-6xl mx-auto text-center">
+    <a href="add_doctor.html" class="card inline-block cursor-pointer text-blue-400 font-semibold hover:text-white transition">
+      ➕ Add New Doctor
+    </a>
+  </section>
+
+  <!-- Doctors Table -->
+  <section class="py-10 px-6 max-w-6xl mx-auto">
+    <div class="card overflow-x-auto">
+      <table class="min-w-full table-auto text-left text-gray-200">
+        <thead class="bg-gray-800">
+          <tr>
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Specialization</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Phone</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-700">
+          <tr>
+            <td class="px-4 py-2">D001</td>
+            <td class="px-4 py-2">Dr. Kavya Terlapu</td>
+            <td class="px-4 py-2">Cardiologist</td>
+            <td class="px-4 py-2">kavya@example.com</td>
+            <td class="px-4 py-2">+91 98765 43210</td>
+            <td class="px-4 py-2 flex gap-2">
+              <a href="edit_doctor.html" class="text-yellow-400 hover:text-yellow-300">✏️ Edit</a>
+              <a href="#" class="text-red-400 hover:text-red-300">🗑️ Delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2">D002</td>
+            <td class="px-4 py-2">Dr. Rahul Sharma</td>
+            <td class="px-4 py-2">Neurologist</td>
+            <td class="px-4 py-2">rahul@example.com</td>
+            <td class="px-4 py-2">+91 91234 56789</td>
+            <td class="px-4 py-2 flex gap-2">
+              <a href="edit_doctor.html" class="text-yellow-400 hover:text-yellow-300">✏️ Edit</a>
+              <a href="#" class="text-red-400 hover:text-red-300">🗑️ Delete</a>
+            </td>
+          </tr>
+          <!-- More doctors can be added here -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900/70 text-gray-400 text-center py-6 mt-10 text-sm">
+    <p class="mb-1">&copy; 2025 Online Hospital Management System</p>
+    <p>👩‍💼 Admin Panel | Secure Access</p>
+  </footer>
+
+</body>
+</html>
